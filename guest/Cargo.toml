@@ -1,0 +1,11 @@
+[package]
+name = "guest"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen = "0.26.0"

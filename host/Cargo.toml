@@ -1,0 +1,8 @@
+[package]
+name = "host"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+wasm-bridge = { git = "https://github.com/kajacx/wasm-bridge", features = ["async", "component-model"] }
