@@ -1,25 +1,16 @@
-use exports::component_test::wit_protocol::my_interface::{Guest, GuestMyRes, MyRes};
+use component_test::wit_protocol::host::my_func;
+use exports::component_test::wit_protocol::guest::Guest;
 
 wit_bindgen::generate!({
     path: "../protocol.wit",
 });
 
-struct MyResImpl;
+struct GuestInterface;
 
-impl GuestMyRes for MyResImpl {
-    fn new() -> Self {
-        Self
+impl Guest for GuestInterface {
+    fn run() {
+        let _res = my_func();
     }
 }
 
-struct MyInterface;
-
-impl Guest for MyInterface {
-    type MyRes = MyResImpl;
-
-    fn my_func() -> Option<MyRes> {
-        None
-    }
-}
-
-export!(MyInterface);
+export!(GuestInterface);

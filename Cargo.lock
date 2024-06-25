@@ -131,6 +131,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "downcast-rs"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "75b325c5dbd37f80359721ad39aca5a29fb04c89279657cffdda8736d0c0b9d2"
+
+[[package]]
 name = "equivalent"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -200,7 +206,6 @@ checksum = "d231dfb89cfffdbc30e7fc41579ed6066ad03abda9e567ccafae602b97ec5024"
 name = "host"
 version = "0.0.0"
 dependencies = [
- "anyhow",
  "console_error_panic_hook",
  "tokio",
  "tracing",
@@ -210,6 +215,7 @@ dependencies = [
  "wasm-bindgen-futures",
  "wasm_component_layer",
  "wasm_runtime_layer",
+ "wasmi_runtime_layer",
 ]
 
 [[package]]
@@ -228,6 +234,12 @@ dependencies = [
  "hashbrown",
  "serde",
 ]
+
+[[package]]
+name = "indexmap-nostd"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8e04e2fd2b8188ea827b32ef11de88377086d690286ab35747ef7f9bf3ccb590"
 
 [[package]]
 name = "itoa"
@@ -263,6 +275,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c"
 
 [[package]]
+name = "libm"
+version = "0.2.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4ec2a862134d2a7d32d7983ddcdd1c4923530833c9f2ea1a44fc5fa473989058"
+
+[[package]]
 name = "log"
 version = "0.4.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -291,6 +309,15 @@ checksum = "77a8165726e8236064dbb45459242600304b42a5ea24ee2948e18e023bf7ba84"
 dependencies = [
  "overload",
  "winapi",
+]
+
+[[package]]
+name = "num-traits"
+version = "0.2.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841"
+dependencies = [
+ "autocfg",
 ]
 
 [[package]]
@@ -335,6 +362,12 @@ name = "overload"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b15813163c1d831bf4a13c3610c05c0d03b39feb07f7e09fa234dac9b15aaf39"
+
+[[package]]
+name = "paste"
+version = "1.0.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 
 [[package]]
 name = "pin-project-lite"
@@ -461,6 +494,12 @@ checksum = "47317bbaf63785b53861e1ae2d11b80d6b624211d42cb20efcd210ee6f8a14bc"
 dependencies = [
  "smallvec",
 ]
+
+[[package]]
+name = "spin"
+version = "0.9.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
 
 [[package]]
 name = "stable_deref_trait"
@@ -787,6 +826,50 @@ dependencies = [
 ]
 
 [[package]]
+name = "wasmi"
+version = "0.31.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77a8281d1d660cdf54c76a3efa9ddd0c270cada1383a995db3ccb43d166456c7"
+dependencies = [
+ "smallvec",
+ "spin",
+ "wasmi_arena",
+ "wasmi_core",
+ "wasmparser-nostd",
+]
+
+[[package]]
+name = "wasmi_arena"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "104a7f73be44570cac297b3035d76b169d6599637631cf37a1703326a0727073"
+
+[[package]]
+name = "wasmi_core"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dcf1a7db34bff95b85c261002720c00c3a6168256dcb93041d3fa2054d19856a"
+dependencies = [
+ "downcast-rs",
+ "libm",
+ "num-traits",
+ "paste",
+]
+
+[[package]]
+name = "wasmi_runtime_layer"
+version = "0.31.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0d4af0589780a5b6d0676aec939b82fbb8c7cefb5d0e6157c1b858ab2ec16dd3"
+dependencies = [
+ "anyhow",
+ "ref-cast",
+ "smallvec",
+ "wasm_runtime_layer",
+ "wasmi",
+]
+
+[[package]]
 name = "wasmparser"
 version = "0.119.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -819,6 +902,15 @@ dependencies = [
  "hashbrown",
  "indexmap",
  "semver",
+]
+
+[[package]]
+name = "wasmparser-nostd"
+version = "0.100.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d5a015fe95f3504a94bb1462c717aae75253e39b9dd6c3fb1062c934535c64aa"
+dependencies = [
+ "indexmap-nostd",
 ]
 
 [[package]]

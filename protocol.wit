@@ -1,13 +1,15 @@
 package component-test:wit-protocol;
 
-interface my-interface {
-  resource my-res {
-    constructor();
-  }
-
+interface host {
+  resource my-res {}
   my-func: func() -> option<my-res>;
 }
 
-world my-world {
-  export my-interface;
+interface guest {
+  run: func();
+}
+
+world guest-world {
+  import host;
+  export guest;
 }

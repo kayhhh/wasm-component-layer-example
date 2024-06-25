@@ -9,7 +9,7 @@ pub async fn start() {
     tracing_wasm::set_as_global_default();
 
     info!("start");
-    host::run_test(BYTES).unwrap();
+    host::run_test(BYTES);
 }
 
 #[cfg(target_family = "wasm")]
@@ -20,5 +20,5 @@ fn main() {}
 async fn main() {
     tracing_subscriber::fmt().init();
     info!("main");
-    host::run_test(BYTES).unwrap();
+    host::run_test(BYTES);
 }
